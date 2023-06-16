@@ -1,0 +1,21 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+       HashSet<Integer> hr=new HashSet<>();
+        HashSet<Integer> hc=new HashSet<>();
+        int r=matrix.length;
+        int c=matrix[0].length;
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+               if(matrix[i][j]==0){
+                   hr.add(i);
+                   hc.add(j);
+               }
+            }
+        }
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+               if(hr.contains(i)==true || hc.contains(j)==true) matrix[i][j]=0;
+            }
+        } 
+    }
+}
