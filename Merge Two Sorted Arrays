@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.* ;
+
+public class Solution {
+    public static int[] ninjaAndSortedArrays(int arr1[], int arr2[], int m, int n) {
+        // Write your code here.
+        int i=0;
+        while(i<m && arr1[i]!=0){
+            if(arr1[i]<arr2[0]) i++;
+            else{
+                swap(arr1,arr2,i,0);
+                int j=0;
+                while(j+1<n && arr2[j]>arr2[j+1]) {
+                    swap(arr2,j,j+1);
+                    j++;
+                    }
+                i++;
+            }
+        }
+        int j=0;
+        while(j<n){
+            arr1[i++]=arr2[j++];
+        }
+        return arr1;
+    }
+    public static void swap(int[]arr1,int []arr2,int i,int j){
+        int temp=arr1[i];
+        arr1[i]=arr2[j];
+        arr2[j]=temp;
+    }
+    public static void swap(int []arr1,int i,int j){
+        int temp=arr1[i];
+        arr1[i]=arr1[j];
+        arr1[j]=temp;
+    }
+}
