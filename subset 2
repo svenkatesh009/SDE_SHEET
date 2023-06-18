@@ -1,0 +1,22 @@
+class Solution {
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        HashSet<List<Integer>> hs=new HashSet<>();
+        List<List<Integer>> ans=new ArrayList<>();
+        int n=nums.length;
+        Arrays.sort(nums);
+        recur(0,n,nums,new ArrayList<>(),ans,hs);
+        return ans;
+    }
+    void recur (int index,int n,int [] nums,List<Integer> curr,List<List<Integer>>ans,HashSet<List<Integer>>hs){
+        if(index==n){
+            if(hs.contains(curr)) return;
+            ans.add(new ArrayList<>(curr));
+            hs.add(new ArrayList<>(curr));
+            return;
+        }
+        curr.add(nums[index]);
+        recur(index+1,n,nums,curr,ans,hs);
+        curr.remove(curr.size()-1);
+        recur(index+1,n,nums,curr,ans,hs);
+    }
+}
