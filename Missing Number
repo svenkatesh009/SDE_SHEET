@@ -1,0 +1,42 @@
+Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
+Example 1:
+Input: nums = [3,0,1]
+Output: 2
+Explanation:
+n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the missing number in the range since it does not appear in nums.
+
+SOLUTION:
+class Solution {
+    public int missingNumber(int[] nums) {
+        int n=nums.length;
+    int expectedXOR = 0, actualXOR = 0;
+
+        // XOR all numbers from 1 to N
+        for (int i = 0; i <=n; i++) {
+            expectedXOR ^= i;
+        }
+
+        // XOR all elements in the given array
+        for (int num : nums) {
+            actualXOR ^= num;
+        }
+
+        // The missing number is expectedXOR ^ actualXOR
+        return expectedXOR ^ actualXOR;
+    }
+}
+
+SIMPLE EG:
+🔥 Every number that appears twice CANCELS out
+
+Let’s cancel step by step:
+
+0 ^ 0 = 0 → disappears
+
+1 ^ 1 = 0 → disappears
+
+2 ^ 2 = 0 → disappears
+
+4 ^ 4 = 0 → disappears
+
+5 ^ 5 = 0 → disappears
