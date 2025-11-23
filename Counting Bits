@@ -22,3 +22,12 @@ class Solution {
         exec(res, x * 2 + 1, c + 1, n); 
     }
 }
+
+VISUAL EXPLANATION:
+1
+├── 2
+│   ├── 4
+│   └── 5
+└── 3
+    ├── 6
+    └── 7
