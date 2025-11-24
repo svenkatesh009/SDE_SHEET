@@ -1,0 +1,14 @@
+Given the root of a binary tree, return its maximum depth.
+A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+SOLUTION:
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root==null) return 0;
+        // max=0;
+        // height(root,0);
+        int lh=maxDepth(root.left);
+        int rh=maxDepth(root.right);
+        return Math.max(lh,rh)+1; 
+    }
+}
