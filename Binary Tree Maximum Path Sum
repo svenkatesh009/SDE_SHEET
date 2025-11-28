@@ -1,0 +1,56 @@
+A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root.
+The path sum of a path is the sum of the node's values in the path.
+Given the root of a binary tree, return the maximum path sum of any non-empty path.
+
+SOLUTION:
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+     private int[] solve(TreeNode root) {
+
+
+        if(root == null) return new int[]{Integer.MIN_VALUE, 0};
+
+
+        int[] left = solve(root.left);
+        int[] right = solve(root.right);
+
+
+        int case1 = Math.max(left[0], right[0]);
+
+
+        int leftBranch = left[1] + root.val;
+        int rightBranch = right[1] + root.val;
+        // case2
+        int maxSumTillRoot = Math.max(root.val, Math.max(leftBranch, rightBranch));
+
+
+        int case3 = left[1] + root.val + right[1];
+
+
+        int[] ans = new int[2];
+        ans[0] = Math.max(case1, Math.max(maxSumTillRoot, case3));
+        ans[1] = maxSumTillRoot;
+
+
+        return ans;
+    }
+
+    public int maxPathSum(TreeNode root) {
+        int[] ans = solve(root);
+        return ans[0];
+    }
+}
