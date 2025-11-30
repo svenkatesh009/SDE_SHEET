@@ -1,0 +1,29 @@
+Given an integer x, return true if x is a palindrome, and false otherwise.
+
+ 
+
+Example 1:
+
+Input: x = 121
+Output: true
+Explanation: 121 reads as 121 from left to right and from right to left.
+
+SOLUTION:
+class Solution {
+    public boolean isPalindrome(int x) {
+        int v=x;
+        int d=0;
+        while(x!=0){
+            d=d*10+x%10;
+            x=x/10;
+        }
+        boolean ans=false;
+        if(d==v && v>0){
+            ans=true;
+        }
+        if(v<=9 && v>=0){
+            ans=true;
+        }
+        return ans;
+    }
+}
